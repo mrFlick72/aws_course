@@ -10,3 +10,5 @@
 - EC2
 - ALB
 - Autoscaling
+
+[general documentation link](https://docs.aws.amazon.com/index.html) 
