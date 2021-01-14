@@ -4,6 +4,7 @@
 > basically the course show how build a simple hello world application step by step in a reproducible way. 
 
 ## Agenda
+- [Terraform](https://github.com/mrFlick72/aws_course/blob/main/terraform/content.md)  
 - IAM 
 - S3
 - CloudFront
