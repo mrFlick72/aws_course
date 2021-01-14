@@ -10,7 +10,9 @@ services:
       AWS_SECRET_KEY: $AWS_SECRET_KEY
     volumes:
       - $TERRAFORM_DOCUMENTS_LOCATION:/terraform
-    command:
-      - init
-#      - plan
-#      - apply -auto-approve
+    command: [
+#        "init"
+#        "plan"
+#        "apply", "-auto-approve"
+#        "destroy", "-auto-approve"
+    ]
