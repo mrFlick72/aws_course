@@ -11,7 +11,7 @@ resource "aws_iam_role" "aws_course_role" {
   }
 }
 
-resource "aws_iam_role_policy_attachment" "aws_course_role_attach" {
+resource "aws_iam_role_policy_attachment" "aws_course_EC2_role_attach" {
   role       = aws_iam_role.aws_course_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
 }
