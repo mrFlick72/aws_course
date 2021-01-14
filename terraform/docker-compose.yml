@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  executor:
+    image: hashicorp/terraform:0.13.5
+    working_dir: /terraform
+    environment:
+      AWS_REGION: $AWS_REGION
+      AWS_ACCESS_KEY: $AWS_ACCESS_KEY
+      AWS_SECRET_KEY: $AWS_SECRET_KEY
+    volumes:
+      - $TERRAFORM_DOCUMENTS_LOCATION:/terraform
+    command:
+      - init
+#      - plan
+#      - apply -auto-approve
