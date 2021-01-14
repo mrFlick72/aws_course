@@ -5,7 +5,7 @@
 
 ## Agenda
 - [Terraform](https://github.com/mrFlick72/aws_course/blob/main/terraform/content.md)  
-- IAM 
+- [IAM](https://github.com/mrFlick72/aws_course/blob/main/iam/content.md) 
 - S3
 - CloudFront
 - EC2

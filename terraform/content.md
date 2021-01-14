@@ -37,3 +37,5 @@ variable pointing to the path of terraform files that you want runs
     - **destroy -auto-approve** in order to revert what in apply phase terraform had provisioned
   
 After that all the configuration in .env file are applied you can run the ``` docker-compose up ``` command 
+
+[To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)

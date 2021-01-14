@@ -32,3 +32,5 @@ A Lambda function can access to AWS resources like S3, DynamoDB and much more vi
 Another advantage of role is about user IAM had limits to 5000 users per AWS account.
 
 [general documentation link](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) 
+
+[To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
