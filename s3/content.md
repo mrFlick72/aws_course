@@ -28,6 +28,44 @@ another thing to know is about deletions, with versioning enabled any deletion a
 Another very cool feature is the possibility to use S3 as a static web server in order to serve static html page, web asset, video, audio and so on.
 
 ## S3 storage class
+S3 offer 4 types of "storage class": 
+- **S3 Standard**
+- **S3 Intelligent-Tiering** 
+- **S3 Standard IA**
+- **S3 One-Zone-IA** 
+- **S3 Glacier**
+- **S3 Glacier Deep Archive** 
+
+Basically based on which storage class you choose you get more availability and durability. 
+
+The first class **S3 Standard** is thought to be the most expensive but in the meanwhile the most available and durable,
+with this class you will get your content replicated to at least 3 Availability Zone.
+
+The **S3 Standard IA** class is though for content that has infrequent access, the price in this case is cheaper, the 
+durability is the same, but you have per GB retrieval fees, minimal storage duration of 30 days and minimal billable object size of 128Kb.
+
+The **S3 One-Zone-IA** instead is cheaper of **S3 Standard IA** it is thought for infrequent access and less durable storage. 
+With this class your content is not replicated across multiple Availability Zones. 
+As **S3 Standard IA** ou have per GB retrieval fees, minimal storage duration of 30 days and minimal billable object size of 128Kb.
+
+**S3 Intelligent-Tiering** is an intelligent storage class capable to understand the object storage and adjust the storage classification. 
+It is basically High available the storage is replicated across at least 3 Availability Zones, has a minimal storage duration of 30 days,
+no minimal billable object size but monitoring and automation fees per object apply. No retrieval fees.
+
+In any case yes before you read that right **S3 Intelligent-Tiering** is capable to "adjust the storage class configuration".
+In S3 is possible change the storage class of a bucket those process is called **Object lifecycle management**.
+Basically it is possible to manage the lifecycle and define policy to move data from a storage class to another or expire objects 
+in order to save money for stale objects. 
+Pay attention it is to configure even for version if versioning is enabled.
+
+**S3 Glacier** and **S3 Glacier Deep Archive** are the cheapest S3 storage class in AWS, but are thought for backup storage.
+Those are highly durable but with very slow retrieval time with fees to applied for retrieval, 
+Glassier has a minimal duration time of 90 days with a minimal billable object size of 40k,
+while Glassier Deep Archive has a minimal duration time of 180 days with a minimal billable object size of 40k.
+For both archive you must first restore archived objects before you can access them
+
+
+
 ## S3 security model
 
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
