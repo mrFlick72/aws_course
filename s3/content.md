@@ -64,8 +64,15 @@ Glassier has a minimal duration time of 90 days with a minimal billable object s
 while Glassier Deep Archive has a minimal duration time of 180 days with a minimal billable object size of 40k.
 For both archive you must first restore archived objects before you can access them
 
-
-
 ## S3 security model
+S3 security feature are very flexible and allows you to define exactly what you can do with an object, there are two main way to achieve security in S3:
+- **ACL** but are deprecated, and usage is discouraged by AWS 
+- **Bucket Policy** a json document that describe permissions to a bucket similar to the policy in IAM
+
+## S3 Advanced features: Events
+Every action to a bucket of object can fire an events that can be consumed by application to do something. 
+The possible destination that an application can subscribe on to consume this event are SNS or SQS. 
+SNS is a pub sub notification product in AWS, while SQS is one of the very first if not the very first messaging product in AWS. 
+Moreover, an event can fire the execution of a Lambda, of course I'm talking of the serverless product in AWS ;)
 
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
