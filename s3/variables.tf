@@ -1,2 +1,3 @@
 variable "bucket_name" {}
-variable "object_path" {}
+variable "image_path" {}
+variable "default_object_path" {}
