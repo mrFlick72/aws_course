@@ -7,6 +7,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = data.aws_s3_bucket.origin.bucket_regional_domain_name
     origin_id = var.origin_id
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
+    }
   }
 
   enabled = true
@@ -52,4 +55,36 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+
+  depends_on = [
+    aws_cloudfront_origin_access_identity.origin_access_identity]
+}
+
+
+data "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+}
+
+data "aws_iam_policy_document" "s3_policy" {
+  statement {
+    actions = [
+      "s3:GetObject"]
+    resources = [
+      "${data.aws_s3_bucket.bucket.arn}/*"]
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "example" {
+  bucket = data.aws_s3_bucket.bucket.bucket
+  policy = data.aws_iam_policy_document.s3_policy.json
+}
+
+resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+  comment = "AWS course"
 }
