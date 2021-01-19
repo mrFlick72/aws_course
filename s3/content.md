@@ -75,4 +75,5 @@ The possible destination that an application can subscribe on to consume this ev
 SNS is a pub sub notification product in AWS, while SQS is one of the very first if not the very first messaging product in AWS. 
 Moreover, an event can fire the execution of a Lambda, of course I'm talking of the serverless product in AWS ;)
 
+[general documentation link](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
