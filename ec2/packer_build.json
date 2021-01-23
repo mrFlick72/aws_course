@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "ami_version": "",
+    "ami_name": "ami-autoscaling-hello-world",
+    "instance_size": "t3.small",
+    "base_ami": "",
+    "ssh_username": "ec2-user",
+    "vpc_id": "",
+    "subnet_id": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "source_ami": "{{user `base_ami`}}",
+      "instance_type": "{{user `instance_size`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_timeout": "20m",
+      "ami_name": "{{user `ami_name`}}-v{{user `ami_version`}}",
+      "ssh_pty": "true",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "tags": {
+        "Name": "Autoscaling Hello World",
+        "scope": "aws_course",
+        "version": "v{{user `ami_version`}}"
+      }
+    }
+  ],
+  "description": "Autoscaling Hello World image v{{user `ami_version`}}",
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provision.sh",
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo {{ .Path }}"
+    }
+  ]
+}
