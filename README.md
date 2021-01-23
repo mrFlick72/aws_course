@@ -14,3 +14,6 @@
 - Autoscaling
 
 [general documentation link](https://docs.aws.amazon.com/index.html) 
+
+p.s.
+Some contents are taken by the public official documentation.
