@@ -64,7 +64,17 @@ Graviton2 CPU based that is Arm-based AWS processors
 For more details please refers to [this link](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/instance-types.html) 
 and [this](https://aws.amazon.com/ec2/instance-types/)
 
+## Security Groups
+Security Group are Firewall of level 5 on OSI stack for EC2. This Firewall product eve if from dev point of view 
+seems to be attached directly to the EC2 instance, it is attached to the ENI (Elastic Network Interface) which in turn is 
+attached to an EC2 instance, remember Security Group are attached to an ENI and then an ENI is attached to an EC2. 
+It is a level 5 OSI stack firewall and is means that is stateful, remember level 5 is session layer. For this reason 
+setting a rules in input even if is not set as output rules all the traffic in inbound then will be allowed to go out 
+even no outbound rules is set.
 
+## Price model
+
+## Launch Template
 
 [general documentation link](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/concepts.html)
 
