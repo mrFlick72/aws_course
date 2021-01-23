@@ -9,9 +9,9 @@
 - [IAM](https://github.com/mrFlick72/aws_course/blob/main/iam/content.md)
 - [S3](https://github.com/mrFlick72/aws_course/blob/main/s3/content.md)
 - [CloudFront](https://github.com/mrFlick72/aws_course/blob/main/cloudfront/content.md)
-- EC2
-- ALB
-- Autoscaling
+- [EC2](https://github.com/mrFlick72/aws_course/blob/main/ec2/content.md)
+- [ALB](https://github.com/mrFlick72/aws_course/blob/main/alb/content.md)
+- [Autoscaling](https://github.com/mrFlick72/aws_course/blob/main/auto-scaling/content.md)
 
 [general documentation link](https://docs.aws.amazon.com/index.html) 
 

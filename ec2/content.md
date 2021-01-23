@@ -92,7 +92,15 @@ The EC2 Instance purchasing options are:
       After one minute, we charge only for the seconds you use
       
 - Spot Instances
-    -  Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
+    - Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
+    - Can give up to 90% of discount respect to on-demand instances
+    - Designed for fault-tolerant and stateless workload
+    - Basically you set a maximum spot price, as long as the AWS spot price is below your spot price your spot instance will be
+      alive otherwise AWS notify you a termination signal and after 2 minutes your spot instance will be terminated by AWS   
+    - Termination process can be mitigated with spot block that will block this termination behaviour at most for 6 hours 
+      but in some very special case AWS can terminate your instance in any case
+    - [price model in case of termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#billing-for-interrupted-spot-instances)
+    - For more details [refers to this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
     
 - Reserved Instances
     - Reduce your Amazon EC2 costs by making a commitment to a consistent instance configuration,
