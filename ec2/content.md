@@ -90,10 +90,10 @@ The EC2 Instance purchasing options are:
     - Pay, by the second, for the instances that you launch.
     - Each time you start a stopped instance we charge a minimum of one minute for usage.
       After one minute, we charge only for the seconds you use
-
-- Savings Plans
-    - Reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years.
-    - For more details [refers to this link](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html)
+      
+- Spot Instances
+    -  Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
+    
 - Reserved Instances
     - Reduce your Amazon EC2 costs by making a commitment to a consistent instance configuration,
       including instance type and Region, for a term of 1 or 3 years.
@@ -108,8 +108,10 @@ The EC2 Instance purchasing options are:
       - All Upfront
       - Partial Upfront
       - No Upfront
-- Spot Instances
-    -  Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly.
+    
+- Savings Plans
+    - Reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years.
+    - For more details [refers to this link](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html)
 
 - Dedicated Hosts
     - Pay for a physical host that is fully dedicated to running your instances, 
