@@ -14,7 +14,7 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/usr/bin/java /usr/local/autoscaling-java-helloworld/autoscaling-java-helloworld.jar
+ExecStart=/usr/bin/java -jar /usr/local/autoscaling-java-helloworld/autoscaling-java-helloworld.jar
 Restart=on-failure
 
 [Install]
