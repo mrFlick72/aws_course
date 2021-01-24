@@ -1,6 +1,5 @@
 {
   "variables": {
-    "BUCKET_FOLDER_KEY": "",
     "ami_version": "1.0.0",
     "ami_name": "ami-autoscaling-hello-world",
     "instance_size": "t3.small",
@@ -12,10 +11,12 @@
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "amzn-ami*-ebs",
+          "name": "amzn2-ami-hvm-2.0.*-x86_64-gp2",
           "root-device-type": "ebs"
         },
-        "owners": ["amazon"],
+        "owners": [
+          "amazon"
+        ],
         "most_recent": true
       },
       "instance_type": "{{user `instance_size`}}",
@@ -45,9 +46,6 @@
     {
       "type": "shell",
       "script": "provision.sh",
-      "environment_vars": [
-        "BUCKET_FOLDER_KEY={{user `BUCKET_FOLDER_KEY`}}"
-      ],
       "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo {{ .Path }}"
     }
   ]

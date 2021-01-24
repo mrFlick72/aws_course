@@ -2,8 +2,10 @@
 
 sudo yum update -y
 sudo amazon-linux-extras install -y java-openjdk11
+# TODO
+export BUCKET_FOLDER_KEY="put year your folder key"
 
-aws cp s3://${BUCKET_FOLDER_KEY}/autoscaling-java-helloworld.jar  /usr/local/autoscaling-java-helloworld/autoscaling-java-helloworld.jar
+aws s3 cp s3://${BUCKET_FOLDER_KEY}/autoscaling-java-helloworld.jar  /usr/local/autoscaling-java-helloworld/autoscaling-java-helloworld.jar
 
 sudo bash -c 'cat << EOF > /lib/systemd/system/autoscaling-java-helloworld.service
 [Unit]
