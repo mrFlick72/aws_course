@@ -1,24 +1,38 @@
 {
   "variables": {
-    "ami_version": "",
+    "BUCKET_FOLDER_KEY": "",
+    "ami_version": "1.0.0",
     "ami_name": "ami-autoscaling-hello-world",
     "instance_size": "t3.small",
-    "base_ami": "",
-    "ssh_username": "ec2-user",
-    "vpc_id": "",
-    "subnet_id": ""
+    "ssh_username": "ec2-user"
   },
   "builders": [
     {
       "type": "amazon-ebs",
-      "source_ami": "{{user `base_ami`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
       "instance_type": "{{user `instance_size`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_timeout": "20m",
       "ami_name": "{{user `ami_name`}}-v{{user `ami_version`}}",
       "ssh_pty": "true",
-      "vpc_id": "{{user `vpc_id`}}",
-      "subnet_id": "{{user `subnet_id`}}",
+      "vpc_filter": {
+        "filters": {
+          "isDefault": "true"
+        }
+      },
+      "subnet_filter": {
+        "most_free": true,
+        "random": true
+      },
+      "iam_instance_profile": "aws_course_role",
       "tags": {
         "Name": "Autoscaling Hello World",
         "scope": "aws_course",
@@ -31,6 +45,9 @@
     {
       "type": "shell",
       "script": "provision.sh",
+      "environment_vars": [
+        "BUCKET_FOLDER_KEY={{user `BUCKET_FOLDER_KEY`}}"
+      ],
       "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo {{ .Path }}"
     }
   ]
