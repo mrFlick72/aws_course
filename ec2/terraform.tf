@@ -4,10 +4,15 @@ resource "aws_security_group" "autoscaling_hello_world_sg" {
   name = "autoscaling_hello_world_sg"
 
   ingress {
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [
+      "0.0.0.0/0"]
     from_port = 8080
     protocol = "TCP"
     to_port = 8080
+  }
+
+  tags = {
+    scope = "aws_course"
   }
 }
 
@@ -27,6 +32,7 @@ resource "aws_instance" "aws_course_ec2_instance" {
 
   tags = {
     "Name":"Autoscaling Hello World"
+    scope = "aws_course"
   }
 
 }
