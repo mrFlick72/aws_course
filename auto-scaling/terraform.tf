@@ -6,17 +6,20 @@ data aws_ami "ami" {
 
   filter {
     name = "tag:Name"
-    values = ["Autoscaling Hello World"]
+    values = [
+      "Autoscaling Hello World"]
   }
 
   filter {
     name = "tag:scope"
-    values = ["aws_course"]
+    values = [
+      "aws_course"]
   }
 
   filter {
     name = "tag:version"
-    values = ["v1.0.0"]
+    values = [
+      "v1.0.0"]
   }
 }
 
@@ -47,10 +50,19 @@ resource "aws_launch_template" "aws_course_launch_template" {
     name = "aws_course_role"
   }
 
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      "Name":"Autoscaling Hello World"
+      scope = "aws_course"
+    }
+  }
   tags = {
-    "Name":"Autoscaling Hello World"
+    "Name":"Autoscaling Hello World Launch Template"
     scope = "aws_course"
   }
+
   image_id = data.aws_ami.ami.id
   instance_type = var.instance_type
   key_name = var.key_name
