@@ -11,6 +11,8 @@ resource "aws_lb_target_group" "aws_course_tg" {
   port = 80
   protocol = "HTTP"
 
+  vpc_id = data.aws_vpc.vpc.id
+
   health_check {
     protocol = "HTTP"
     port = "8080"
@@ -39,24 +41,25 @@ resource "aws_lb_target_group_attachment" "instances_tg" {
 
 ////////////////////// define ALB
 data "aws_vpc" "vpc" {
+  default = "true"
 }
 data "aws_subnet_ids" "subnetId" {
   vpc_id = data.aws_vpc.vpc.id
 }
+
 data "aws_security_group" "sg" {
-  filter {
-    name = "Name"
-    values = [
-      "autoscaling_hello_world_sg"]
+  tags = {
+    scope:"aws_course"
   }
 }
+
 resource "aws_lb" "aws_course_alb" {
 
   internal = false
   load_balancer_type = "application"
   security_groups = [
     data.aws_security_group.sg.id]
-  subnets = data.aws_subnet_ids.subnetId
+  subnets = toset(data.aws_subnet_ids.subnetId.ids)
   tags = {
     Name = "aws_course_alb"
     scope = "aws_course"
