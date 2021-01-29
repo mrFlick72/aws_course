@@ -8,7 +8,6 @@ data "aws_instances" "instances" {
 }
 
 resource "aws_lb_target_group" "aws_course_tg" {
-  name = "aws_course-tg"
   port = 80
   protocol = "HTTP"
 
@@ -23,6 +22,7 @@ resource "aws_lb_target_group" "aws_course_tg" {
     timeout = 10
   }
   tags = {
+    Name = "aws_course_tg"
     scope = "aws_course"
   }
 }
@@ -51,13 +51,14 @@ data "aws_security_group" "sg" {
   }
 }
 resource "aws_lb" "aws_course_alb" {
-  name = "aws_course-alb"
+
   internal = false
   load_balancer_type = "application"
   security_groups = [
     data.aws_security_group.sg.id]
   subnets = data.aws_subnet_ids.subnetId
   tags = {
+    Name = "aws_course_alb"
     scope = "aws_course"
   }
 }
