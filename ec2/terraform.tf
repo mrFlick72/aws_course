@@ -54,7 +54,7 @@ resource "aws_instance" "aws_course_ec2_instance" {
   ]
 
   tags = {
-    "Name":"Autoscaling Hello World"
+    "Name" = "Autoscaling Hello World"
     scope = "aws_course"
   }
 
