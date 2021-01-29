@@ -1,5 +1,29 @@
 provider "aws" {}
 
+
+data aws_ami "ami" {
+  owners = [
+    var.account_owner]
+
+  filter {
+    name = "tag:Name"
+    values = [
+      "Autoscaling Hello World"]
+  }
+
+  filter {
+    name = "tag:scope"
+    values = [
+      "aws_course"]
+  }
+
+  filter {
+    name = "tag:version"
+    values = [
+      "v1.0.0"]
+  }
+}
+
 resource "aws_security_group" "autoscaling_hello_world_sg" {
   name = "autoscaling_hello_world_sg"
 
@@ -42,7 +66,7 @@ resource "aws_security_group" "autoscaling_hello_world_sg" {
 resource "aws_instance" "aws_course_ec2_instance" {
   depends_on = [
     aws_security_group.autoscaling_hello_world_sg]
-  ami = var.ami
+  ami = data.aws_ami.ami.id
   instance_type = var.instance_type
   iam_instance_profile = "aws_course_role"
   associate_public_ip_address = true
