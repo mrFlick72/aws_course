@@ -11,6 +11,14 @@ resource "aws_security_group" "autoscaling_hello_world_sg" {
     to_port = 8080
   }
 
+  egress {
+    cidr_blocks = [
+      "0.0.0.0/0"]
+    from_port = 8080
+    protocol = "TCP"
+    to_port = 8080
+  }
+
   tags = {
     scope = "aws_course"
   }

@@ -8,14 +8,14 @@ data "aws_instances" "instances" {
 }
 
 resource "aws_lb_target_group" "aws_course_tg" {
-  port = 80
+  name = "aws-course-tg"
+  port = 8080
   protocol = "HTTP"
 
   vpc_id = data.aws_vpc.vpc.id
 
   health_check {
     protocol = "HTTP"
-    port = "8080"
     path = "/index"
     unhealthy_threshold = 2
     healthy_threshold = 2
@@ -24,7 +24,6 @@ resource "aws_lb_target_group" "aws_course_tg" {
     timeout = 10
   }
   tags = {
-    Name = "aws_course_tg"
     scope = "aws_course"
   }
 }
@@ -36,7 +35,7 @@ resource "aws_lb_target_group_attachment" "instances_tg" {
 
   target_group_arn = aws_lb_target_group.aws_course_tg.arn
   target_id = each.value
-  port = 80
+  port = 8080
 }
 
 ////////////////////// define ALB
@@ -54,14 +53,13 @@ data "aws_security_group" "sg" {
 }
 
 resource "aws_lb" "aws_course_alb" {
-
+  name = "aws-course-alb"
   internal = false
   load_balancer_type = "application"
   security_groups = [
     data.aws_security_group.sg.id]
   subnets = toset(data.aws_subnet_ids.subnetId.ids)
   tags = {
-    Name = "aws_course_alb"
     scope = "aws_course"
   }
 }
