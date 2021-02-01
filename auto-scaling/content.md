@@ -42,6 +42,8 @@ On top of those two strategy we can have those scaling options:
 Take in account that all Dynamic autoscaling will involve CloudWatch metrics that will trigger an autoscaling event. 
 Between one scale up or down event within a time window called scaling cooldowns. 
 This is needed to prevent an hysterical scale up and down of instance that can cause a significant cost increasing 
+
+
 [more details to this link](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
