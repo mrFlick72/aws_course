@@ -11,6 +11,20 @@ The key components are:
   p.s. please use **Launch Template** instead of **Launch Configuration** since that **Launch Configuration** is much less powerful, flexible and more over **Launch Template** is the AWS way 
   I mean AWS strong suggest to use **Launch Template** over **Launch Configuration**.
 
+An Auto Scaling group starts by launching enough instances to meet its desired capacity.
+An Auto Scaling group can launch On-Demand Instances, Spot Instances, or both.
+It maintains this number of instances by performing periodic health checks on the instances in the group.
+If an instance becomes unhealthy, the group terminates the unhealthy instance and launches another instance to replace it.
+When instances are launched, if you specified multiple Availability Zones, the desired capacity is distributed across these Availability Zones.
+If a scaling action occurs, Amazon EC2 Auto Scaling automatically maintains balance across all of the Availability Zones that you specify.
+The default health checks for an Auto Scaling group are EC2 status checks only. If an instance fails these status checks, 
+it is marked unhealthy and will be terminated while Amazon EC2 Auto Scaling launches a new instance in replacement.
+To ensure that your Auto Scaling group can determine an instance's health based on additional tests provided by the load balancer,
+you can configure the Auto Scaling group to use Elastic Load Balancing (ELB) health checks. The load balancer periodically sends pings, 
+attempts connections, or sends requests to test the EC2 instances and determines if an instance is unhealthy.
+If you configure the Auto Scaling group to use ELB health checks, it considers the instance unhealthy if it fails either the EC2 status checks or the ELB health checks.
+
+
 [more details to this link](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
