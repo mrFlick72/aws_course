@@ -8,6 +8,9 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
     }
   }
 
+  aliases = [
+    var.cdn_alias]
+
   enabled = true
   is_ipv6_enabled = true
   default_root_object = var.default_object_path
@@ -49,7 +52,8 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = var.cert_arn
+    ssl_support_method = "sni-only"
   }
 
   depends_on = [
