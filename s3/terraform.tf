@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_s3_bucket_object" "profile" {
   bucket = aws_s3_bucket.bucket.bucket
-  key = "static/images/profile.png"
+  key = "image/profile.png"
   source = var.image_path
 
   content_type = "image/png"
