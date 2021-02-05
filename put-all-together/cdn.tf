@@ -52,9 +52,10 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = var.cdn_cert_arn
-    ssl_support_method = "sni-only" #PAY ATTENTION use this parameter there is no separate pricing for this feature.
-                                    #If you will use vip instead of sni-only you will pay 600USD pre months!!!!
+    acm_certificate_arn = aws_acm_certificate.cdn_cert.arn
+    ssl_support_method = "sni-only"
+    #PAY ATTENTION use this parameter there is no separate pricing for this feature.
+    #If you will use vip instead of sni-only you will pay 600USD pre months!!!!
   }
 
   depends_on = [
@@ -83,4 +84,36 @@ resource "aws_s3_bucket_policy" "example" {
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "AWS course"
+}
+
+resource "aws_acm_certificate" "cdn_cert" {
+  domain_name = var.cdn_domain
+  validation_method = "DNS"
+  provider = aws.aws_east
+  tags = {
+    Name = var.cdn_domain
+    scope = "aws_course"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_route53_record" "aws_cdn_acm_certificate_record" {
+  for_each = {
+  for dvo in aws_acm_certificate.cdn_cert.domain_validation_options : dvo.domain_name => {
+    name = dvo.resource_record_name
+    record = dvo.resource_record_value
+    type = dvo.resource_record_type
+  }
+  }
+
+  allow_overwrite = true
+  name = each.value.name
+  records = [
+    each.value.record]
+  ttl = 60
+  type = each.value.type
+  zone_id = var.dns_zone_id
 }

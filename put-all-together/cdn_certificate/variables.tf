@@ -1,2 +1,0 @@
-#Certificate
-variable "domain" {}
