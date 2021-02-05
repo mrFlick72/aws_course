@@ -7,7 +7,8 @@ variable "default_website_error" {}
 # CloudFront
 variable "default_object_path" {}
 variable "origin_id" {}
-variable "cert_arn" {}
+variable "alb_cert_arn" {}
+variable "cdn_cert_arn" {}
 
 #Route53
 variable "dns_zone_id" {}

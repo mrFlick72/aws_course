@@ -1,21 +1,16 @@
-
-// dns
-/*
 resource "aws_route53_record" "dns_balancer_mounting" {
   zone_id = var.dns_zone_id
   allow_overwrite = true
-  name = var.balancer_record_name
+  name = var.domain
 
   type = "A"
   alias {
-    name = data.aws_alb.alb.dns_name
-    zone_id = data.aws_alb.alb.zone_id
+    name = aws_lb.aws_course_alb.dns_name
+    zone_id = aws_lb.aws_course_alb.zone_id
     evaluate_target_health = true
   }
 }
-*/
 
-// dns
 resource "aws_route53_record" "dns_cdn_mounting" {
   zone_id = var.dns_zone_id
   allow_overwrite = true

@@ -52,8 +52,9 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = var.cert_arn
-    ssl_support_method = "sni-only"
+    acm_certificate_arn = var.cdn_cert_arn
+    ssl_support_method = "sni-only" #PAY ATTENTION use this parameter there is no separate pricing for this feature.
+                                    #If you will use vip instead of sni-only you will pay 600USD pre months!!!!
   }
 
   depends_on = [

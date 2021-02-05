@@ -22,5 +22,7 @@ This technic is called OAI or in other words Origin Access Identity
 [general documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 
 [OAI](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
+[pricing](https://aws.amazon.com/it/cloudfront/pricing/)
+[custom-ssl-domains](https://aws.amazon.com/cloudfront/custom-ssl-domains/)
 
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)

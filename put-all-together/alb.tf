@@ -1,3 +1,17 @@
+resource "aws_acm_certificate" "cert" {
+  domain_name = var.domain
+  validation_method = "DNS"
+
+  tags = {
+    Name = var.domain
+    scope = "aws_course"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "aws_lb_target_group" "aws_course_tg" {
   name = "aws-course-tg"
   port = 8080
@@ -37,7 +51,7 @@ resource "aws_lb_listener" "front_end" {
   port = "443"
   protocol = "HTTPS"
   ssl_policy = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
-  certificate_arn = var.cert_arn
+  certificate_arn = var.alb_cert_arn
 
   default_action {
     type = "forward"
