@@ -3,6 +3,7 @@ resource "aws_acm_certificate" "cert" {
   validation_method = "DNS"
 
   tags = {
+    Name = var.domain
     scope = "aws_course"
   }
 
