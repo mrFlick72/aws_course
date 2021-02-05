@@ -1,1 +1,0 @@
-domain="static.vvaudi-lab.com"
