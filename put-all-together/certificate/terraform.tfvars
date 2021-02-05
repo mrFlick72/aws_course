@@ -1,2 +1,1 @@
-domain = "vvaudi-lab.com"
-subject_alternative_name="static.vvaudi-lab.com"
+domain="static.vvaudi-lab.com"
