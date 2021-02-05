@@ -15,3 +15,8 @@ variable "dns_zone_id" {}
 variable "domain" {}
 variable "cdn_alias" {}
 variable "alb_alias" {}
+
+#Autoscaling
+variable "instance_type" {}
+variable "key_name" {}
+variable "account_owner" {}
