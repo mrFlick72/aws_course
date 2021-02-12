@@ -13,7 +13,7 @@ The Base concepts of IAM are:
 - role
 - policy
 
-A **User**, as world can suggest, is an AWS user capable to access to web console and or to access to CLI. 
+A **User**, as word can suggest, is an AWS user capable to access to web console and or to access to CLI. 
 By default, any new created user do not have any permission.
 A **Policy** is a set of permission that can be attached to an identity, or a resource.
 An identity-based policies are basically JSON documents that control what actions an identity like users, groups  and roles.
