@@ -76,4 +76,5 @@ SNS is a pub sub notification product in AWS, while SQS is one of the very first
 Moreover, an event can fire the execution of a Lambda, of course I'm talking of the serverless product in AWS ;)
 
 [general documentation link](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
+[storage class link](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 [To the index](https://github.com/mrFlick72/aws_course/blob/main/README.md)
