@@ -58,8 +58,6 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
     #If you will use vip instead of sni-only you will pay 600USD pre months!!!!
   }
 
-  depends_on = [
-    aws_cloudfront_origin_access_identity.origin_access_identity]
 }
 
 data "aws_iam_policy_document" "s3_policy" {
