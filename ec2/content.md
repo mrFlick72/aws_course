@@ -14,7 +14,7 @@ from developer point of view the basic concepts to know are related to:
 AMI stands for Amazon Machine Images, it is basically all the needed to speedup a new EC2 instance.
 It can be composed by:
 - one or more Amazon Elastic Block Store (Amazon EBS) snapshots
-- one or more instance-store
+- zero or more instance-store
 - permissions about which AWS accounts can use it
 - block device mapping that specifies the volumes to attach to the instance when it's launched.
 
@@ -38,7 +38,7 @@ the throughput and network efficiency are increased and optimized.
 
 ### Instance Store
 An instance store some time referred as ephemeral storage are special storage attached directly to an EC2 host.  
-This storage is located on disks that are physically attached to the host, for this reason  thsi kind of storage has 
+This storage is located on disks that are physically attached to the host, for this reason  this kind of storage has 
 the maximum level of performance since that it do not have to go over the network.
 However, there are things to be taken in consideration. If the EC2 instance is rebooted 
 since that during rebooting the EC2 host will be the same your data will be still in the disk, however is for some reason 
