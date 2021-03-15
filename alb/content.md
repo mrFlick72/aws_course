@@ -10,8 +10,8 @@ workloads.
 There is three Elastic Load Balancer products in AWS: Application, Network and Classic Load Balancer. Classic Load
 Balancer is deprecated and should not used anymore.
 
-Network Load Balancer is a Layer 4 OSI Balancer it is the most performant and is typically used for very high
-performance workload, you need to use ports different to 80 or 443, basically a layer 4 OSI balancer is enough for your
+Network Load Balancer is a Layer 4 OSI Balancer it is the most performant. It is typically used for very high
+performance workload, if you need to use ports different to 80 or 443, basically a layer 4 OSI balancer is enough for your
 use case. Many feature of a NLB are the same of ALB but in this course we will focus on ALB
 
 ALB or Application Load Balancer instead is a full Layer 7 balancer and is the best option when all the power of a layer
